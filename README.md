@@ -19,15 +19,15 @@ To run the Blink Job Board, you need to configure the following environment vari
 - **`AIRTABLE_BASE_ID`**: The ID of your Airtable base where job applications will be stored.
 
 Ensure these variables are set in your environment before running the application. You can set them in a `.env.loval` file at the root of your project:
-AIRTABLE_PERSONAL_ACCESS_TOKEN=your_airtable_personal_access_token
-AIRTABLE_BASE_ID=your_airtable_base_id
+```AIRTABLE_PERSONAL_ACCESS_TOKEN=your_airtable_personal_access_token```
+```AIRTABLE_BASE_ID=your_airtable_base_id```
 
 
 ## Configuration
 
 1. **Airtable Configuration**: 
    - The application connects to Airtable using the `airtable` package. It requires your personal access token and base ID to read from and write to your Airtable base.
-   - The base should have a table named "Job Board" with fields for "Superteam Username", "GitHub Username", "Wallet Address", and "Submission Date".
+   - The base should have a table named "Job Board" with fields for "Superteam Username", "GitHub Username", "Wallet Address", and "Submission Date". This format is required to make this blink work. 
 
 2. **Solana Configuration**:
    - Connects to the Solana `mainnet-beta` cluster using the `@solana/web3.js` package.
@@ -55,6 +55,7 @@ You can test the job application process by visiting the following URL:
 1. Clone the repository:
 
 git clone https://github.com/your-repo/blink-job-board.git
+
 cd blink-job-board
 
 
