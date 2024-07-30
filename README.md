@@ -54,14 +54,14 @@ You can test the job application process by visiting the following URL:
 
 1. Clone the repository:
 
-git clone https://github.com/your-repo/blink-job-board.git
+`git clone https://github.com/your-repo/blink-job-board.git`
 
-cd blink-job-board
+`cd blink-job-board`
 
 
 2. Install dependencies:
 
-npm install
+`npm install`
 
 
 3. Set up environment variables:
@@ -70,11 +70,11 @@ Create a `.env.local` file in the root directory and add your Airtable credentia
 
 4. Start the server:
 
-npm run dev
+`npm run dev`
 
-If your server is running on port 3001, you can access your blink at:
+If your server is running on port 3000, you can access your blink at:
 
-https://dial.to/?action=solana-action:http://localhost:3001/api/actions/job
+https://dial.to/?action=solana-action:http://localhost:3000/api/actions/job
 
 
 
