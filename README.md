@@ -1,36 +1,88 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Blink Job Board
 
-## Getting Started
+## Overview
 
-First, run the development server:
+The Blink Job Board is a Blink job application platform that allows developers to submit their profiles for job opportunities. It integrates with Airtable to manage job applications.
 
-```bash
+## Features
+
+- **Submit Profile**: Users can submit their Superteam or GitHub profiles for job applications.
+- **Profile Validation**: Validates profile links for Superteam or GitHub.
+- **Airtable Integration**: Stores profile details and application information.
+- **Transaction Fee Estimate**: Provides an estimated transaction fee for the submission.
+
+## Environment Variables
+
+To run the Blink Job Board, you need to configure the following environment variables:
+
+- **`AIRTABLE_PERSONAL_ACCESS_TOKEN`**: Your Airtable personal access token. This is used for authentication with the Airtable API.
+- **`AIRTABLE_BASE_ID`**: The ID of your Airtable base where job applications will be stored.
+
+Ensure these variables are set in your environment before running the application. You can set them in a `.env.loval` file at the root of your project:
+AIRTABLE_PERSONAL_ACCESS_TOKEN=your_airtable_personal_access_token
+AIRTABLE_BASE_ID=your_airtable_base_id
+
+
+## Configuration
+
+1. **Airtable Configuration**: 
+   - The application connects to Airtable using the `airtable` package. It requires your personal access token and base ID to read from and write to your Airtable base.
+   - The base should have a table named "Job Board" with fields for "Superteam Username", "GitHub Username", "Wallet Address", and "Submission Date".
+
+2. **Solana Configuration**:
+   - Connects to the Solana `mainnet-beta` cluster using the `@solana/web3.js` package.
+   - Creates a dummy transaction to estimate fees, which is part of the response to a successful profile submission.
+
+## Endpoints
+
+- **GET /api/actions/job**: Provides information about the job application action. Users will see a form where they can submit their profile link.
+- **POST /api/actions/job**: Handles the submission of job applications. Validates the profile link, checks for existing profiles, saves data to Airtable, and estimates transaction fees.
+
+## Testing
+
+You can test the job application process by visiting the following URL:
+
+[Submit Job Profile](https://dial.to/?action=solana-action:https://www.dappshunt.xyz/api/actions/job)
+
+## Error Handling
+
+- **Missing Configuration**: If `AIRTABLE_PERSONAL_ACCESS_TOKEN` or `AIRTABLE_BASE_ID` is missing, an error will be thrown.
+- **Invalid Profile Link**: Profiles must be from Superteam or GitHub. Invalid links will result in an error.
+- **Existing Profile**: Duplicate profiles for the same wallet address are not allowed.
+
+## Development
+
+1. Clone the repository:
+
+git clone https://github.com/your-repo/blink-job-board.git
+cd blink-job-board
+
+
+2. Install dependencies:
+
+npm install
+
+
+3. Set up environment variables:
+
+Create a `.env.local` file in the root directory and add your Airtable credentials.
+
+4. Start the server:
+
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+If your server is running on port 3001, you can access your blink at:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+https://dial.to/?action=solana-action:http://localhost:3001/api/actions/job
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+## Contributing
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Feel free to submit issues or pull requests to improve the project
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+
